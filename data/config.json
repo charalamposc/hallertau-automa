@@ -1,0 +1,82 @@
+{
+  "seed": 1520,
+  "rounds": 6,
+  "start_workers": 6,
+  "max_workers_after_round": [8, 10, 12, 12, 12, 12],
+  "bonuses": true,
+  "levels": {
+    "easy":      { "sheep": 1, "tool": 2, "card": 0, "bonus": 1, "target": [80, 120] },
+    "medium":    { "sheep": 1, "tool": 3, "card": 2, "bonus": 3, "target": [100, 140] },
+    "difficult": { "sheep": 1, "tool": 4, "card": 3, "bonus": 5, "target": [120, 160] }
+  },
+  "tools_rule": "not_activated",
+  "tools_space_mode": "pay_max_cost",
+  "worker_icon_share": 0.25,
+
+  "quadrant_cards": {
+    "2": [[1, 2], [2, 4], [3, 4], [1, 4], [1, 3], [2, 3]],
+    "3": [[1, 2, [3, 4]], [2, 3, 4], [1, 3, 4], [1, 2, 3], [1, 2, 4], [[1, 2], 3, 4]],
+    "4": [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]
+  },
+  "cards_csv": "specs/cards.csv",
+
+  "quadrants": {
+    "1": { "name": "Quadrant 1", "icon": "images/q1.png", "color": "#4F7942" },
+    "2": { "name": "Quadrant 2", "icon": "images/q2.png", "color": "#C8962E" },
+    "3": { "name": "Quadrant 3", "icon": "images/q3.png", "color": "#8B5A3C" },
+    "4": { "name": "Quadrant 4", "icon": "images/q4.png", "color": "#3F6E8C" }
+  },
+
+  "profiles": {
+    "standard": { "active": [0.75, 0.75, 0.70, 0.70, 0.65, 0.65] },
+    "early":    { "active": [0.90, 0.85, 0.70, 0.50, 0.35, 0.25] },
+    "late":     { "active": [0.10, 0.20, 0.35, 0.55, 0.80, 0.95] },
+    "rare":     { "active": [0.20, 0.25, 0.30, 0.35, 0.40, 0.45] }
+  },
+
+  "max_cost_share": [
+    { "1": 0.75, "2": 0.25, "3": 0 },
+    { "1": 0.50, "2": 0.25, "3": 0.25 },
+    { "1": 0.25, "2": 0.50, "3": 0.25 },
+    { "1": 0.25, "2": 0.25, "3": 0.50 },
+    { "1": 0,    "2": 0.30, "3": 0.70 },
+    { "1": 0.05, "2": 0.20, "3": 0.75 }
+  ],
+
+  "tool_share": 0.5,
+
+  "sheep_share": [
+    { "0": 3, "1": 3 },
+    { "0": 2, "1": 2, "2": 2 },
+    { "0": 1, "1": 1, "2": 3, "3": 1 },
+    { "1": 1, "2": 2, "3": 3 },
+    { "2": 3, "3": 3 },
+    { "2": 1, "3": 5 }
+  ],
+
+  "actions": [
+    { "id": 1,  "quadrant": "1", "name": "Sheep Breeding", "spaces": 3, "profile": "standard" },
+    { "id": 2,  "quadrant": "1", "name": "Sheep Shearing", "spaces": 3, "profile": "standard" },
+    { "id": 3,  "quadrant": "1", "name": "Clay Delivery",  "spaces": 3, "profile": "late" },
+    { "id": 4,  "quadrant": "1", "name": "Farming",        "spaces": 3, "profile": "standard" },
+    { "id": 5,  "quadrant": "1", "name": "Gateway Card",   "spaces": 2, "profile": "standard", "first_player": true },
+
+    { "id": 6,  "quadrant": "2", "name": "Butchery",       "spaces": 3, "profile": "standard" },
+    { "id": 7,  "quadrant": "2", "name": "Nursery",        "spaces": 3, "profile": "standard" },
+    { "id": 8,  "quadrant": "2", "name": "Busy Weekend",   "spaces": 3, "profile": "standard" },
+    { "id": 9,  "quadrant": "2", "name": "Clearing",       "spaces": 3, "profile": "standard" },
+    { "id": 10, "quadrant": "2", "name": "Farm Card",      "spaces": 2, "profile": "standard", "first_player": true },
+
+    { "id": 11, "quadrant": "3", "name": "Small Trade",    "spaces": 3, "profile": "standard" },
+    { "id": 12, "quadrant": "3", "name": "Cultivation",    "spaces": 3, "profile": "standard" },
+    { "id": 13, "quadrant": "3", "name": "Weekly Market",  "spaces": 3, "profile": "standard" },
+    { "id": 14, "quadrant": "3", "name": "Land Sale",      "spaces": 3, "profile": "standard" },
+    { "id": 15, "quadrant": "3", "name": "Bonus Card",     "spaces": 2, "profile": "standard", "first_player": true },
+
+    { "id": 16, "quadrant": "4", "name": "Fertilizing",    "spaces": 3, "profile": "standard" },
+    { "id": 17, "quadrant": "4", "name": "Tool Shed",      "spaces": 3, "profile": "standard" },
+    { "id": 18, "quadrant": "4", "name": "Town Hall",      "spaces": 3, "profile": "standard", "never_in_rounds": [1] },
+    { "id": 19, "quadrant": "4", "name": "Sheep Market",   "spaces": 3, "profile": "standard" },
+    { "id": 20, "quadrant": "4", "name": "Point Card",     "spaces": 2, "profile": "late", "first_player": true }
+  ]
+}

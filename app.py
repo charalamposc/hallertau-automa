@@ -1,6 +1,9 @@
 """Streamlit companion app for the Hallertau automa.
 
-Run from the project folder with:  .venv/bin/streamlit run app/app.py
+Run with:  streamlit run app/app.py   (or `streamlit run app.py` inside app/)
+
+The app is self-contained: the deck, config and test statistics are in data/,
+the icons in images/ (copies made by `python sync_app.py` in the project).
 
 Pick the number of automas and a difficulty per automa in the sidebar;
 changing them starts a new game (after a confirmation while a game is running).
@@ -14,22 +17,14 @@ the last test runs (output/test_stats.json).
 import base64
 import json
 import random
-import sys
-from pathlib import Path
 
 import streamlit as st
 
-# The app lives in app/; the deck, config, images and test statistics are shared
-# with the print-and-play and test scripts in the project folder above it.
-ROOT = Path(__file__).resolve().parent.parent
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
+import reports
+from card_component import automa_card
+from deck import APP_DIR, ROMAN, load_config, load_deck
 
-import reports  # noqa: E402
-from card_component import automa_card  # noqa: E402
-from generate_cards import ROMAN, load_deck  # noqa: E402
-
-CONFIG = json.loads((ROOT / "config.json").read_text())
+CONFIG = load_config()
 DECK = load_deck(CONFIG)
 ROUNDS = CONFIG["rounds"]
 START_WORKERS = CONFIG["start_workers"]
@@ -327,7 +322,7 @@ SHEEP_IMG = svg_img(
 @st.cache_data
 def image_tag(rel_path, css_class=""):
     """Local image as <img> with a data URI (works inside the component)."""
-    path = ROOT / rel_path
+    path = APP_DIR / rel_path
     if not path.is_file():
         return ""
     data = base64.b64encode(path.read_bytes()).decode()

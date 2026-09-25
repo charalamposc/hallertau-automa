@@ -1,8 +1,9 @@
 """Round and end-of-game reports for the Hallertau automa app.
 
 Probabilities come from the last test runs: `test_run.py --games N` writes
-output/test_stats.json with the score distribution per difficulty level (final
-and after every round). The reports compare each automa with those numbers.
+the score distribution per difficulty level (final and after every round) to
+output/test_stats.json and copies it to app/data/. The reports compare each
+automa with those numbers.
 """
 
 import json
@@ -12,9 +13,9 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 
-from generate_cards import ROMAN
+from deck import DATA_DIR, ROMAN
 
-STATS_PATH = Path(__file__).resolve().parent.parent / "output" / "test_stats.json"
+STATS_PATH = DATA_DIR / "test_stats.json"
 
 ACTUAL_COLOR = "#2F6FB0"   # the automa's own line
 EXPECTED_COLOR = "#8A8A8A"  # test-run median and band
